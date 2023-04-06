@@ -328,7 +328,8 @@ std::unique_ptr<User> User::recoverFromStorage(std::shared_ptr<IStorage> storage
           user->pImpl_->budgetNullifiers_.insert(c.getNullifier());
           std::cout << "warn: mutiple budget coins found updating with least value.." << c.getVal() << std::endl;
         } else {
-          std::cout << "warn: ignore budget coins value.." << c.getVal() << std::endl;
+          std::cout << "warn: ignore budget coins value: " << c.getVal()
+                    << " use lower value: " << user->pImpl_->budgetCoin_.value().getVal() << std::endl;
         }
       } else {
         user->pImpl_->budgetCoin_.emplace(c);
